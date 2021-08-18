@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_messages"
+        android:icon="@drawable/ic_bottom_navigation_menu_message"
+        android:title="@string/bottom_navigation_menu_message" />
+    <item
+        android:id="@+id/menu_contacts"
+        android:icon="@drawable/ic_bottom_navigation_menu_contact"
+        android:title="@string/bottom_navigation_menu_contacts" />
+
+    <item
+        android:id="@+id/menu_setting"
+        android:icon="@drawable/ic_bottom_navigation_menu_setting"
+        android:title="@string/bottom_navigation_menu_setting" />
+
+    <item
+        android:id="@+id/menu_mine"
+        android:icon="@drawable/ic_bottom_navigation_menu_mine"
+        android:title="@string/bottom_navigation_menu_mine" />
+</menu>
