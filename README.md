@@ -1,7 +1,5 @@
 # ViewPager2 使用说明书
 
-[toc]
-
 ## 零、Demo
 
 [项目源码](https://github.com/autismbug/HelloViewpage2.git)
