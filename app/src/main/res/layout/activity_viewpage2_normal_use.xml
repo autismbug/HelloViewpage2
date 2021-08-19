@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="允许手动滑动"
+        android:text="@string/enableManual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonDrag"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +31,22 @@
         android:id="@+id/buttonDrag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="自动滑动"
+        android:text="@string/autoDrag"
         app:layout_constraintBottom_toBottomOf="@+id/view_pager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/switchMaterialEnableManual"
         app:layout_constraintTop_toTopOf="@+id/view_pager"
         app:layout_constraintVertical_bias="0.9" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchVerticalManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hvDrag"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDrag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_pager"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.autismbug.hello.viewpage2.R
 
 class ViewAdapter : RecyclerView.Adapter<ViewAdapter.PagerViewHolder>() {
-    private var mList: List<Int> = ArrayList()
+    var data: List<Int> = ArrayList()
 
     class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val mTextView: TextView = itemView.findViewById(R.id.tv_text)
@@ -22,9 +22,7 @@ class ViewAdapter : RecyclerView.Adapter<ViewAdapter.PagerViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_page, parent, false)
-        return PagerViewHolder(itemView)
+        return PagerViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_page, parent, false))
     }
 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
@@ -32,10 +30,6 @@ class ViewAdapter : RecyclerView.Adapter<ViewAdapter.PagerViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return mList.size
-    }
-
-    fun setList(list: List<Int>) {
-        mList = list
+        return data.size
     }
 }

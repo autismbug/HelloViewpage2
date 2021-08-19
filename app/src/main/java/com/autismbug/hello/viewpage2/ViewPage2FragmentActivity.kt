@@ -26,8 +26,6 @@ class ViewPage2FragmentActivity : AppCompatActivity() {
         compositePageTransformer.addTransformer(MarginPageTransformer(resources.getDimension(R.dimen.dp_10).toInt()))
         viewPager2.apply {
             adapter = fragmentPagerAdapter
-            // 不提前加载
-//            offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
 
             // 一屏多页
             offscreenPageLimit = 1

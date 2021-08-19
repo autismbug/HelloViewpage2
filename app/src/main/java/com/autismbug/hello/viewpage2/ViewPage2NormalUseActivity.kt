@@ -12,7 +12,7 @@ class ViewPage2NormalUseActivity : AppCompatActivity() {
     private lateinit var viewPager2: ViewPager2
 
     companion object {
-        private const val TAG = "MainActivity"
+        private const val TAG = "ViewPage2NormalActivity"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,8 +20,8 @@ class ViewPage2NormalUseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_viewpage2_normal_use)
 
         val viewAdapter = ViewAdapter()
-        viewAdapter.setList(listOf(1, 2, 3, 4))
-        viewPager2 = findViewById<ViewPager2>(R.id.view_pager)
+        viewAdapter.data = listOf(1, 2, 3, 4)
+        viewPager2 = findViewById(R.id.view_pager)
         viewPager2.apply {
             adapter = viewAdapter
             // 页面、状态、滚动监听
@@ -48,13 +48,11 @@ class ViewPage2NormalUseActivity : AppCompatActivity() {
                     Log.d(TAG, "onPageScrollStateChanged() called with: state = $state")
                 }
             })
-
-            // 垂直方向滑动
-//            orientation = ViewPager2.ORIENTATION_VERTICAL
         }
 
         val buttonDrag = findViewById<MaterialButton>(R.id.buttonDrag)
         buttonDrag.setOnClickListener {
+            // 程序拖拽
             fakeDragBy()
         }
 
@@ -64,11 +62,15 @@ class ViewPage2NormalUseActivity : AppCompatActivity() {
             // 是否允许手动滑动
             viewPager2.isUserInputEnabled = isChecked
         }
+
+        val switchVerticalManual = findViewById<SwitchMaterial>(R.id.switchVerticalManual)
+        switchVerticalManual.setOnCheckedChangeListener { _, isChecked ->
+            // 水平垂直滑动
+            viewPager2.orientation =
+                if (isChecked) ViewPager2.ORIENTATION_VERTICAL else ViewPager2.ORIENTATION_HORIZONTAL
+        }
     }
 
-    /**
-     * 模拟程序拖拽
-     */
     private fun fakeDragBy() {
         viewPager2.beginFakeDrag()
         if (viewPager2.fakeDragBy(-310f)) {

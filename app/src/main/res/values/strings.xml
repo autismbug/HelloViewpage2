@@ -6,4 +6,7 @@
     <string name="bottom_navigation_menu_contacts">通讯录</string>
     <string name="bottom_navigation_menu_mine">我</string>
     <string name="bottom_navigation_menu_setting">设置</string>
+    <string name="enableManual">允许手动滑动</string>
+    <string name="autoDrag">触发滑动</string>
+    <string name="hvDrag">水平/垂直滑动</string>
 </resources>

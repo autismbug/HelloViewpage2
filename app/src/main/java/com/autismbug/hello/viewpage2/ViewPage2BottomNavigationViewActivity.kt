@@ -21,7 +21,7 @@ class ViewPage2BottomNavigationViewActivity : AppCompatActivity() {
         viewPager2.apply {
             adapter = fragmentPagerAdapter
             // 不提前加载
-            offscreenPageLimit = fragmentPagerAdapter.itemCount
+            offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
             // 单动画效果
             setPageTransformer(ScaleInTransformer())
         }
@@ -33,6 +33,8 @@ class ViewPage2BottomNavigationViewActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.menu_messages -> {
                     viewPager2.setCurrentItem(0, true)
+                    // 如返回 false ，bottomNavigation 被点击的 item ，不会被置为选中状态
+                    // 但是，又会因为 viewPager2 的回调，将 checked 状态，置为选中
                     true
                 }
                 R.id.menu_contacts -> {

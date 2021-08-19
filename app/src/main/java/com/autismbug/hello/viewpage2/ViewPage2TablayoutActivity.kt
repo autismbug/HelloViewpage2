@@ -7,7 +7,9 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.autismbug.hello.viewpage2.adapter.FragmentPagerAdapter
+import com.autismbug.hello.viewpage2.transformer.DepthPageTransformer
 import com.autismbug.hello.viewpage2.transformer.ScaleInTransformer
+import com.autismbug.hello.viewpage2.transformer.ZoomOutPageTransformer
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -20,32 +22,24 @@ class ViewPage2TablayoutActivity : AppCompatActivity() {
         val viewPager2 = findViewById<ViewPager2>(R.id.pager)
 
         val fragmentPagerAdapter = FragmentPagerAdapter(this)
-        val compositePageTransformer = CompositePageTransformer()
-        compositePageTransformer.addTransformer(ScaleInTransformer())
-//        compositePageTransformer.addTransformer(DepthPageTransformer())
-        compositePageTransformer.addTransformer(MarginPageTransformer(resources.getDimension(R.dimen.dp_10).toInt()))
         viewPager2.apply {
             adapter = fragmentPagerAdapter
             // 不提前加载
-//            offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
-
-            // 一屏多页
-            offscreenPageLimit = 1
-            val recyclerView = getChildAt(0) as RecyclerView
-            recyclerView.apply {
-                val padding = resources.getDimensionPixelOffset(R.dimen.dp_10) +
-                        resources.getDimensionPixelOffset(R.dimen.dp_10)
-                setPadding(padding, 0, padding, 0)
-                clipToPadding = false
-            }
-
-            //单个 page 间效果
+            offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
+            // page 间过渡效果
 //            setPageTransformer(MarginPageTransformer(resources.getDimension(R.dimen.dp_10).toInt()))
-            setPageTransformer(compositePageTransformer)
+            //深度变化效果
+//            setPageTransformer(DepthPageTransformer())
+//            // 比例放大进入效果
+//            setPageTransformer(ScaleInTransformer())
+//            // 缩放进入退出效果
+            setPageTransformer(ZoomOutPageTransformer())
+
         }
 
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            //设置标签名称
             tab.text = "OBJECT ${(position + 1)}"
         }.attach()
     }
